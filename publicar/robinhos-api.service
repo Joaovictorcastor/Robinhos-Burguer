@@ -1,0 +1,16 @@
+[Unit]
+Description=API Robinhos Burguer em C#
+After=network.target mysql.service
+
+[Service]
+WorkingDirectory=/opt/robinhos
+ExecStart=/usr/bin/dotnet /opt/robinhos/RobinhosBurguer.dll
+Restart=always
+RestartSec=5
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=ASPNETCORE_URLS=http://127.0.0.1:5080
+Environment=ConnectionStrings__MySql=Server=127.0.0.1;Port=3306;Database=robinhos_burguer;User ID=robinhos;Password=robinhos123;CharSet=utf8mb4;SslMode=None;TreatTinyAsBoolean=True;
+
+[Install]
+WantedBy=multi-user.target
